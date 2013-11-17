@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <xsd:schema id="sfxConfigs" xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
   <xsd:element name="sfxConfigs">
     <xsd:complexType>
@@ -11,14 +12,14 @@
                   <xsd:attribute name="description">
                     <xsd:simpleType>
                       <xsd:restriction base="xsd:string">
-                        <xsd:minLength value="1"/>
+                        <xsd:minLength value="1" />
                       </xsd:restriction>
                     </xsd:simpleType>
                   </xsd:attribute>
                   <xsd:attribute name="command">
                     <xsd:simpleType>
                       <xsd:restriction base="xsd:string">
-                        <xsd:minLength value="1"/>
+                        <xsd:minLength value="1" />
                       </xsd:restriction>
                     </xsd:simpleType>
                   </xsd:attribute>
@@ -28,14 +29,14 @@
             <xsd:attribute name="name">
               <xsd:simpleType>
                 <xsd:restriction base="xsd:string">
-                  <xsd:minLength value="1"/>
+                  <xsd:minLength value="1" />
                 </xsd:restriction>
               </xsd:simpleType>
             </xsd:attribute>
             <xsd:attribute name="modules">
               <xsd:simpleType>
                 <xsd:restriction base='xsd:string'>
-                  <xsd:pattern value='((.)+.sfx;)*(.)+.sfx'/>
+                  <xsd:pattern value='((.)+.sfx;)*(.)+.sfx' />
                 </xsd:restriction>
               </xsd:simpleType>
             </xsd:attribute>
