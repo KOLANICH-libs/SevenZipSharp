@@ -52,6 +52,11 @@ namespace SevenZipTest2013
 		public void ExtractionTestLZMA27ZExtractFiles(){
 			ExtractionTestExtractFiles("lzma2.7z");
 		}
+		
+		[TestMethod]
+		public void ExtractionTestLZMA27ZSFXExtractFiles(){
+			ExtractionTestExtractFiles("7Zip.LZMA2.sfx.exe");
+		}
 
 		[TestMethod]
 		public void ExtractionTestPPMD7ZExtractFiles(){
@@ -181,6 +186,20 @@ namespace SevenZipTest2013
 			using (
 				var tmp = new SevenZipExtractor(
 					File.OpenRead(Path.Combine(archivePath, "Test.lzma.7z"))
+					)
+				) {
+				tmp.FileExtractionStarted += (s, e) =>
+					TestContext.WriteLine(String.Format("[{0}%] {1}", e.PercentDone, e.FileInfo.FileName));
+				tmp.ExtractionFinished += (s, e) => TestContext.WriteLine("Finished!");
+				tmp.ExtractArchive(tempFolder);
+			}
+		}
+
+		[TestMethod]
+		public void StreamingSFXExtractionTest() {
+			using (
+				var tmp = new SevenZipExtractor(
+					File.OpenRead(Path.Combine(archivePath, "Test.7Zip.LZMA2.sfx.exe"))
 					)
 				) {
 				tmp.FileExtractionStarted += (s, e) =>
